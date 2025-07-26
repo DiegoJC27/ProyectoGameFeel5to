@@ -3,25 +3,28 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Variables
-    [SerializeField]private float speed;
-    [SerializeField]private float jumpForce;
+    // Variables
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
     [SerializeField] private float groundPoundForce;
     private float attackDuration = 0f;
-    //Checks
-    [SerializeField]private bool _IsGroundPound = false;
-    [SerializeField]private bool _FirstJump = false;
-    [SerializeField]private bool _IsGrounded = false;
-    [SerializeField]private bool _IsAttacking = false;
+
+    // Checks
+    [SerializeField] private bool _IsGroundPound = false;
+    [SerializeField] private bool _FirstJump = false;
+    [SerializeField] private bool _IsGrounded = false;
+    [SerializeField] private bool _IsAttacking = false;
+
+    // Animations
+    [SerializeField] private Animator animator;
 
     private Rigidbody rigidbody;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Movement();
@@ -38,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S)) move += Vector3.back;
         if (Input.GetKey(KeyCode.A)) move += Vector3.left;
         if (Input.GetKey(KeyCode.D)) move += Vector3.right;
+
+        // Update walk/run animation
+        animator.SetFloat("Speed", move.magnitude);
 
         if (move != Vector3.zero)
         {
@@ -59,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce, rigidbody.linearVelocity.z);
             _FirstJump = true;
             _IsGrounded = false;
+            // Trigger jump animation
+            animator.SetBool("IsJumping", true);
         }
         else if (Input.GetKeyDown(KeyCode.Space) && _FirstJump)
         {
@@ -72,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && !_IsGrounded)
         {
             _IsGroundPound = true;
+            // Trigger ground pound animation
+            animator.SetTrigger("GroundPound");
         }
 
         if (_IsGroundPound && !_IsGrounded)
@@ -88,6 +98,8 @@ public class PlayerMovement : MonoBehaviour
             _IsAttacking = true;
             attackDuration = 0f;
             Debug.Log("ataque");
+            // Trigger attack animation
+            animator.SetTrigger("Attack");
         }
 
         if (_IsAttacking)
@@ -102,8 +114,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
     void OnCollisionEnter(Collision collision)
     {
         _IsGrounded = true;
+        // End jump animation when we land
+        animator.SetBool("IsJumping", false);
     }
 }
