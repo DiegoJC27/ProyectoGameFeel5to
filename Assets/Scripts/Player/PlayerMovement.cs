@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,19 +13,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float fallMultiplier = 2.5f;
     // Checks
     [Header("Checks")]
-    [SerializeField] private bool _IsGroundPound = false;
+    [SerializeField] public bool _IsGroundPound = false;
     [SerializeField] private bool _FirstJump = false;
     [SerializeField] private bool _IsGrounded = false;
-    [SerializeField] private bool _IsAttacking = false;
+    [SerializeField] public bool _IsAttacking = false;
+    [SerializeField]public bool _IsGettingHit = false;
 
+    [Header("AttackColision")]
+    //GameObject attackColision;
     // Animations
     [SerializeField] private Animator animator;
-
+    
     private Rigidbody rigidbody;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        //attackColision.gameObject.SetActive(false);
     }
 
     void Update()
@@ -43,10 +48,6 @@ public class PlayerMovement : MonoBehaviour
         move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, (Input.GetAxisRaw("Vertical")));
         move = move.normalized * speed;
         rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
-        //if (Input.GetKey(KeyCode.W)) move += Vector3.forward;
-        //if (Input.GetKey(KeyCode.S)) move += Vector3.back;
-        //if (Input.GetKey(KeyCode.A)) move += Vector3.left;
-        //if (Input.GetKey(KeyCode.D)) move += Vector3.right;
 
         // Update walk/run animation
         animator.SetFloat("Speed", move.magnitude);
@@ -104,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !_IsAttacking && !_IsGroundPound)
         {
+            //attackColision.gameObject.SetActive(true);
             _IsAttacking = true;
             attackDuration = 0f;
             Debug.Log("ataque");
@@ -119,11 +121,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 _IsAttacking = false;
                 attackDuration = 0f;
+                //attackColision.gameObject.SetActive(false);
                 Debug.Log("Fin ataque");
             }
         }
     }
-
+    public void BoxEnemyJump()
+    {
+        rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce, rigidbody.linearVelocity.z);
+    }
+    public IEnumerator GetHit()
+    {
+        _IsGettingHit = true;
+        GameManager.instance.LoseLife();
+        //animacion de danio
+        yield return new WaitForSeconds(1);
+        _IsGettingHit = false;
+    }
     void OnCollisionEnter(Collision collision)
     {
         _IsGrounded = true;
