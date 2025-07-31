@@ -13,13 +13,14 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private int mangos = 0;
-    [SerializeField] private int lifes = 3;
+    [SerializeField] private int currentLifes = 3;
+    [SerializeField] private int maxLife = 3;
     public bool maskActive = false;
 
     private void Start()
     {
         PlayerUIController.instance.UpdateMangosText(mangos);
-        PlayerUIController.instance.UpdateLifesText(lifes);
+        PlayerUIController.instance.UpdateLifesText(currentLifes);
 
     }
     public void CollectMask()
@@ -37,8 +38,8 @@ public class GameManager : MonoBehaviour
     }
     public void CollectLife()
     {
-        lifes++;
-        PlayerUIController.instance.UpdateLifesText(lifes);
+        currentLifes++;
+        PlayerUIController.instance.UpdateLifesText(currentLifes);
     }
     public void LoseLife()
     {
@@ -47,12 +48,12 @@ public class GameManager : MonoBehaviour
             maskActive = false;
             return;
         }
-        lifes--;
-        if (lifes <= 0)
+        currentLifes--;
+        if (currentLifes <= 0)
         {
             //cosas para perder el juego
         }
-        PlayerUIController.instance.UpdateLifesText(lifes - 1);
+        PlayerUIController.instance.UpdateLifesText(currentLifes - 1);
 
     }
 }
