@@ -4,12 +4,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Variables
+    [Header("Variables")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundPoundForce;
-    private float attackDuration = 0f;
-
+    [SerializeField]private float attackDuration = 0f;
+    [SerializeField] private float fallMultiplier = 2.5f;
     // Checks
+    [Header("Checks")]
     [SerializeField] private bool _IsGroundPound = false;
     [SerializeField] private bool _FirstJump = false;
     [SerializeField] private bool _IsGrounded = false;
@@ -37,20 +39,26 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.W)) move += Vector3.forward;
-        if (Input.GetKey(KeyCode.S)) move += Vector3.back;
-        if (Input.GetKey(KeyCode.A)) move += Vector3.left;
-        if (Input.GetKey(KeyCode.D)) move += Vector3.right;
+        if(!_IsGroundPound)
+        move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, (Input.GetAxisRaw("Vertical")));
+        move = move.normalized * speed;
+        rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
+        //if (Input.GetKey(KeyCode.W)) move += Vector3.forward;
+        //if (Input.GetKey(KeyCode.S)) move += Vector3.back;
+        //if (Input.GetKey(KeyCode.A)) move += Vector3.left;
+        //if (Input.GetKey(KeyCode.D)) move += Vector3.right;
 
         // Update walk/run animation
         animator.SetFloat("Speed", move.magnitude);
 
         if (move != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(move);
+            Vector3 rotation = new Vector3(move.x, 0, move.z);
+            Quaternion targetRotation = Quaternion.LookRotation(rotation);
+            transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,10*Time.deltaTime);
 
-            move = move.normalized * speed;
-            rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
+            //move = move.normalized * speed;
+            //rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
         }
         else
         {
@@ -73,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce / 2f, rigidbody.linearVelocity.z);
             _FirstJump = false;
         }
+        // Aumentar gravedad cuando cae
+        if (rigidbody.linearVelocity.y < 0)
+        {
+            rigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
     }
 
     private void GroundPound()
@@ -80,14 +93,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && !_IsGrounded)
         {
             _IsGroundPound = true;
-            // Trigger ground pound animation
             animator.SetTrigger("GroundPound");
-        }
 
-        if (_IsGroundPound && !_IsGrounded)
-        {
+            // Aplicar fuerza hacia abajo
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, -groundPoundForce, rigidbody.linearVelocity.z);
-            _IsGroundPound = false;
         }
     }
 
@@ -118,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         _IsGrounded = true;
+        _IsGroundPound = false;
         // End jump animation when we land
         animator.SetBool("IsJumping", false);
     }

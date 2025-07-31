@@ -1771,6 +1771,37 @@ Transform:
   - {fileID: 2827324758261372908}
   m_Father: {fileID: 5518930826735713987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2670630865251739139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073812763222563767}
+  m_Layer: 0
+  m_Name: CameraPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073812763222563767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670630865251739139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.59, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 539745478100655087}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2718572269799085750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +2020,7 @@ Transform:
   - {fileID: 4494418218088283728}
   - {fileID: 4977372144643668229}
   - {fileID: 3107201403744340549}
+  - {fileID: 1073812763222563767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7635726066119915157
@@ -2076,6 +2108,8 @@ MonoBehaviour:
   speed: 10
   jumpForce: 8
   groundPoundForce: 20
+  attackDuration: 0
+  fallMultiplier: 2.5
   _IsGroundPound: 0
   _FirstJump: 0
   _IsGrounded: 0
