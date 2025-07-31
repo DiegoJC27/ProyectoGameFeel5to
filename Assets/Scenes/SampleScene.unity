@@ -4357,6 +4357,18 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 8864306724857461650, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
+      propertyPath: jumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864306724857461650, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
+      propertyPath: fallMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864306724857461650, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
+      propertyPath: groundPoundForce
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
