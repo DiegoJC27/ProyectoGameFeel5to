@@ -10,12 +10,12 @@ public class CajaGrande : Caja
     {
         if (tipo == TipoImpacto.Saltar)
         {
-            vida--;
 
             for (int i = 0; i < mangosSaltando; i++)
             {
                 GameManager.instance.CollectMango();
             }
+            vida--;
 
             if (vida <= 0)
             {
