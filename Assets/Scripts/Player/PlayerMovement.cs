@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float groundPoundForce;
-    [SerializeField]private float attackDuration = 0f;
+    [SerializeField] private float attackDuration = 0f;
     [SerializeField] private float fallMultiplier = 2.5f;
     // Checks
     [Header("Checks")]
@@ -17,13 +17,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _FirstJump = false;
     [SerializeField] private bool _IsGrounded = false;
     [SerializeField] public bool _IsAttacking = false;
-    [SerializeField]public bool _IsGettingHit = false;
+    [SerializeField] public bool _IsGettingHit = false;
 
     [Header("AttackColision")]
-    //GameObject attackColision;
+    [SerializeField]private GameObject attackCollision;
+    [SerializeField]private GameObject floorCollision;
     // Animations
     [SerializeField] private Animator animator;
-    
+
     private Rigidbody rigidbody;
 
     void Start()
@@ -44,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 move = Vector3.zero;
 
-        if(!_IsGroundPound)
-        move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, (Input.GetAxisRaw("Vertical")));
+        if (!_IsGroundPound)
+            move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, (Input.GetAxisRaw("Vertical")));
         move = move.normalized * speed;
         rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
 
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 rotation = new Vector3(move.x, 0, move.z);
             Quaternion targetRotation = Quaternion.LookRotation(rotation);
-            transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,10*Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
 
             //move = move.normalized * speed;
             //rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
@@ -95,8 +96,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _IsGroundPound = true;
             animator.SetTrigger("GroundPound");
+            attackCollision.gameObject.SetActive(true);
 
-            // Aplicar fuerza hacia abajo
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, -groundPoundForce, rigidbody.linearVelocity.z);
         }
     }
@@ -105,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !_IsAttacking && !_IsGroundPound)
         {
-            //attackColision.gameObject.SetActive(true);
+            attackCollision.gameObject.SetActive(true);
             _IsAttacking = true;
             attackDuration = 0f;
             Debug.Log("ataque");
@@ -121,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _IsAttacking = false;
                 attackDuration = 0f;
-                //attackColision.gameObject.SetActive(false);
+                attackCollision.gameObject.SetActive(false);
                 Debug.Log("Fin ataque");
             }
         }
@@ -129,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
     public void BoxEnemyJump()
     {
         rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce, rigidbody.linearVelocity.z);
+        animator.SetBool("IsJumping", true);
     }
     public IEnumerator GetHit()
     {
@@ -140,9 +142,24 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
+
+        if (_IsGroundPound == true)
+        {
+            StartCoroutine(GroundPoundFinishing());
+        }
+        else
+        {
+            _IsGrounded = true;
+            _FirstJump = false;
+            animator.SetBool("IsJumping", false);
+        }
+    }
+    IEnumerator GroundPoundFinishing()
+    {
+        yield return new WaitForSeconds(.5f);
         _IsGrounded = true;
         _IsGroundPound = false;
-        // End jump animation when we land
+        attackCollision.gameObject.SetActive(false);
         animator.SetBool("IsJumping", false);
     }
 }
