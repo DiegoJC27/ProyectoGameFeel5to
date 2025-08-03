@@ -22,7 +22,7 @@ public class AttackCollider : MonoBehaviour
                 if (enemy != null)
                 {
                     Debug.Log("ATACAR ENEMIGO");
-                    //enemy.Die();  
+                    enemy.Die();  
                 }
             }
         }
@@ -48,7 +48,7 @@ public class AttackCollider : MonoBehaviour
                 Enemy enemy = other.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    //enemy.Die();  
+                    enemy.Die();  
                 }
             }
         }
