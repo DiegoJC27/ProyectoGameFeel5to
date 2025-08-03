@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     // Checks
     [Header("Checks")]
     [SerializeField] public bool _IsGroundPound = false;
-    [SerializeField] private bool _FirstJump = false;
-    [SerializeField] private bool _IsGrounded = false;
+    [SerializeField] public bool _FirstJump = false;
+    [SerializeField] public bool _IsGrounded = false;
     [SerializeField] public bool _IsAttacking = false;
     [SerializeField] public bool _IsGettingHit = false;
 
@@ -23,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private GameObject attackCollision;
     [SerializeField]private GameObject floorCollision;
     // Animations
+    [Header("Cinemachine")]
+    [SerializeField]private CinemachineCamera cinemachineCamera;
+    [SerializeField]private CinemachineBasicMultiChannelPerlin noise;
+    [SerializeField] private float amplitud;
+    [SerializeField] private float frecuency;
     [SerializeField] private Animator animator;
 
     private Rigidbody rigidbody;
@@ -30,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        //attackColision.gameObject.SetActive(false);
+        attackCollision.gameObject.SetActive(false);
+        noise.AmplitudeGain = 0f;
+        noise.FrequencyGain = 0f;
     }
 
     void Update()
@@ -112,6 +120,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("ataque");
             // Trigger attack animation
             animator.SetTrigger("Attack");
+            noise.AmplitudeGain = amplitud;
+            noise.FrequencyGain = frecuency;
         }
 
         if (_IsAttacking)
@@ -124,6 +134,8 @@ public class PlayerMovement : MonoBehaviour
                 attackDuration = 0f;
                 attackCollision.gameObject.SetActive(false);
                 Debug.Log("Fin ataque");
+                noise.AmplitudeGain = 0f;
+                noise.FrequencyGain = 0f;
             }
         }
     }
@@ -136,10 +148,16 @@ public class PlayerMovement : MonoBehaviour
     {
         _IsGettingHit = true;
         GameManager.instance.LoseLife();
+        Debug.Log("Recibir danio");
+        noise.AmplitudeGain = 3.7f;
+        noise.FrequencyGain = 0.08f;
         //animacion de danio
         yield return new WaitForSeconds(1);
+        noise.AmplitudeGain = 0f;
+        noise.FrequencyGain = 0f;
         _IsGettingHit = false;
     }
+    //Checar suelo
     void OnCollisionEnter(Collision collision)
     {
 
@@ -156,10 +174,14 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator GroundPoundFinishing()
     {
+        noise.AmplitudeGain = amplitud;
+        noise.FrequencyGain = frecuency;
         yield return new WaitForSeconds(.5f);
         _IsGrounded = true;
         _IsGroundPound = false;
         attackCollision.gameObject.SetActive(false);
+        noise.AmplitudeGain = 0f;
+        noise.FrequencyGain = 0f;
         animator.SetBool("IsJumping", false);
     }
 }
