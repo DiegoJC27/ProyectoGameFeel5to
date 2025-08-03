@@ -5,8 +5,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float speed = 3.5f;
 
-    Vector3 dir = new Vector3(0, 0, 1);
-
     public Transform[] targets;
     int targetsIndex;
     Transform currentTarget;
@@ -20,7 +18,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Time.deltaTime * speed * dir);
+        transform.position += transform.forward * speed * Time.deltaTime;
 
         Vector3 targetPos = currentTarget.position;
 
@@ -38,6 +36,11 @@ public class Enemy : MonoBehaviour
         Vector3 direction = currentTarget.position - transform.position;
         direction.y = 0;
         direction.Normalize();
-        transform.forward = direction;
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            float rotationSpeed = 850f;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }
