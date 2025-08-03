@@ -19,26 +19,25 @@ public class FloorCollider : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Enemy enemy = other.GetComponent<Enemy>();
-            if (playerScript != null)
-            {
-                if (enemy == null || playerScript == null) return;
 
-                playerScript.BoxEnemyJump();
-
-
-            }
+               if (enemy == null || playerScript == null) return;
+               playerScript.BoxEnemyJump();            
         }
         else if (other.CompareTag("Caja"))
         {
             Caja caja = other.GetComponent<Caja>();
             if (caja == null || playerScript == null) return;
-            if (hasJumpedFromBox == false)
+            if (hasJumpedFromBox == false && playerScript._IsGroundPound==false)
             {
                 playerScript.BoxEnemyJump();
                 caja.Romper(Caja.TipoImpacto.Saltar);
                 hasJumpedFromBox = true;
                 StartCoroutine(ResetJumpFromBoxAfterDelay(.2f));
 
+            }
+            else if( playerScript._IsGroundPound == true)
+            {
+                caja.Romper(Caja.TipoImpacto.Golpear);
             }
         }
         else
@@ -56,6 +55,8 @@ public class FloorCollider : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         hasJumpedFromBox = false;
+        playerScript._IsGrounded = false;
+        playerScript._FirstJump = true;
     }
 }
 

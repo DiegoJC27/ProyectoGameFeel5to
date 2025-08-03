@@ -7,7 +7,9 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         playerScript = GetComponent<PlayerMovement>();
+    
     }
+    //Recolectables
     private void OnTriggerEnter(Collider other)
     {
         Collectibles col = other.GetComponent<Collectibles>();
@@ -20,32 +22,21 @@ public class PlayerCollision : MonoBehaviour
         {
             if (playerScript != null)
             {
-                if((playerScript._IsAttacking || playerScript._IsGroundPound))
-                {
-                    //matar enemigo
-                    //
-                    return;
-                }
-                else if(playerScript._IsGettingHit == true) return;
-                else if(playerScript._IsGettingHit == false && !playerScript._IsAttacking && !playerScript._IsGroundPound)
+                if(((!playerScript._IsAttacking || !playerScript._IsGroundPound) && playerScript._IsGettingHit == false))
                 {
                     StartCoroutine(playerScript.GetHit());
                 }
             }
         }
     }
+    //Recibir danio
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy"))
         {
             if (playerScript != null)
             {
-                if ((playerScript._IsAttacking || playerScript._IsGroundPound))
-                {
-                    return;
-                }
-                else if (playerScript._IsGettingHit == true) return;
-                else if (playerScript._IsGettingHit == false && !playerScript._IsAttacking && !playerScript._IsGroundPound)
+                if (((!playerScript._IsAttacking || !playerScript._IsGroundPound) && playerScript._IsGettingHit == false))
                 {
                     StartCoroutine(playerScript.GetHit());
                 }
