@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FloorCollider : MonoBehaviour
@@ -27,21 +28,34 @@ public class FloorCollider : MonoBehaviour
 
             }
         }
-        if (other.CompareTag("Caja") && !hasJumpedFromBox)
+        else if (other.CompareTag("Caja"))
         {
             Caja caja = other.GetComponent<Caja>();
             if (caja == null || playerScript == null) return;
+            if (hasJumpedFromBox == false)
+            {
+                playerScript.BoxEnemyJump();
+                caja.Romper(Caja.TipoImpacto.Saltar);
+                hasJumpedFromBox = true;
+                StartCoroutine(ResetJumpFromBoxAfterDelay(.2f));
 
-            playerScript.BoxEnemyJump();
-            caja.Romper(Caja.TipoImpacto.Saltar);
-            hasJumpedFromBox = true;
+            }
+        }
+        else
+        {
+            hasJumpedFromBox = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Enemy")) hasJumpedFromBox=false;
+        if (other.CompareTag("Enemy")) hasJumpedFromBox = false;
         if (other.CompareTag("Caja")) hasJumpedFromBox = false;
+    }
+    IEnumerator ResetJumpFromBoxAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        hasJumpedFromBox = false;
     }
 }
 
