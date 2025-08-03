@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717001250488098892, guid: e046fe4c889e09646be3c677b8da6948, type: 3}
       propertyPath: m_Name
-      value: 035_Trihound_Art Variant
+      value: SimpleEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 5349703554151676662, guid: e046fe4c889e09646be3c677b8da6948, type: 3}
       propertyPath: m_LocalScale.x
