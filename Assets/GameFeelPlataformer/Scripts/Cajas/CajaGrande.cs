@@ -26,7 +26,11 @@ public class CajaGrande : Caja
         {
             for (int i = 0; i < mangosGolpe; i++)
             {
-                Instantiate(mangoPrefab, transform.position + Vector3.up, Quaternion.identity);
+                if (vida > 0)
+                {
+                    Instantiate(mangoPrefab, transform.position + Vector3.up, Quaternion.identity);
+                    vida--;
+                }
             }
 
             Destroy(gameObject);

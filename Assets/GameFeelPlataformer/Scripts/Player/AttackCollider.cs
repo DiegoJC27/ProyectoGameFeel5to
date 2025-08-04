@@ -34,7 +34,7 @@ public class AttackCollider : MonoBehaviour
                 if (caja != null)
                 {
                     caja.Romper(Caja.TipoImpacto.Golpear);
-                    return;
+                    //return;
                 }
             }
         }
@@ -60,7 +60,7 @@ public class AttackCollider : MonoBehaviour
                 if (caja != null)
                 {
                     caja.Romper(Caja.TipoImpacto.Golpear);
-                    return;
+                    //return;
                 }
             }
         }
