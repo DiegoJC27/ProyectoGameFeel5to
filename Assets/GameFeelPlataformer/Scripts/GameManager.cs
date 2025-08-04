@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int mangos = 0;
     [SerializeField] private int currentLifes = 3;
-    [SerializeField] private int maxLife = 3;
     public bool maskActive = false;
 
     private void Start()

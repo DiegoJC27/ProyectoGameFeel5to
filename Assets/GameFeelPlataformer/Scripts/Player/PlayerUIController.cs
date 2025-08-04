@@ -14,7 +14,6 @@ public class PlayerUIController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI mangosText;
     [SerializeField] TextMeshProUGUI lifeText;
-    [SerializeField] TextMeshProUGUI boxesText;
 
     public void UpdateMangosText(int q)
     {
@@ -23,9 +22,5 @@ public class PlayerUIController : MonoBehaviour
     public void UpdateLifesText(int q)
     {
         lifeText.text = q.ToString();
-    }
-    public void UpdateboxesText(int q)
-    {
-        boxesText.text = q.ToString();
     }
 }
