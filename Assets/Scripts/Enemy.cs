@@ -43,4 +43,8 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -7,7 +7,9 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         playerScript = GetComponent<PlayerMovement>();
+    
     }
+    //Recolectables
     private void OnTriggerEnter(Collider other)
     {
         Collectibles col = other.GetComponent<Collectibles>();
@@ -20,39 +22,25 @@ public class PlayerCollision : MonoBehaviour
         {
             if (playerScript != null)
             {
-                if((playerScript._IsAttacking || playerScript._IsGroundPound))
-                {
-                    //matar enemigo
-                    //
-                    return;
-                }
-                else if(playerScript._IsGettingHit == true) return;
-                else if(playerScript._IsGettingHit == false && playerScript._IsAttacking! && playerScript._IsGroundPound!)
+                if(((!playerScript._IsAttacking || !playerScript._IsGroundPound) && playerScript._IsGettingHit == false))
                 {
                     StartCoroutine(playerScript.GetHit());
                 }
             }
         }
-        if (collision.collider.CompareTag("Caja"))
+    }
+    //Recibir danio
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
         {
-           
-                Caja caja = collision.collider.GetComponent<Caja>();
-
-                if (caja == null) return;
-
-                Vector3 normal = collision.contacts[0].normal;
-
-                if (playerScript._IsAttacking || playerScript._IsGroundPound)
-                { 
-                    caja.Romper(Caja.TipoImpacto.Golpear); 
-                    return;
-                }
-                else if (normal.y < -0.5f)
+            if (playerScript != null)
+            {
+                if (((!playerScript._IsAttacking || !playerScript._IsGroundPound) && playerScript._IsGettingHit == false))
                 {
-                    caja.Romper(Caja.TipoImpacto.Saltar);
-                    return;
+                    StartCoroutine(playerScript.GetHit());
                 }
-            
+            }
         }
     }
 }
