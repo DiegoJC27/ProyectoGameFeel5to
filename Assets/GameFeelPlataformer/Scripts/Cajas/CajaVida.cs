@@ -7,7 +7,11 @@ public class CajaVida : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
-        Instantiate(vidaPrefab, transform.position + Vector3.up, Quaternion.identity);
+        if (vida > 0)
+        {
+            Instantiate(vidaPrefab, transform.position + Vector3.up, Quaternion.identity);
+            vida--;
+        }
         Destroy(gameObject);
     }
 }
