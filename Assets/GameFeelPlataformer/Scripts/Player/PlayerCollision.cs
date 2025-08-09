@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCollision : MonoBehaviour
 {
     PlayerMovement playerScript;
-
+    Coroutine getHitCorutine;
+    public UnityEvent onFreezeEvent;
     private void Start()
     {
         playerScript = GetComponent<PlayerMovement>();
@@ -22,14 +25,25 @@ public class PlayerCollision : MonoBehaviour
         {
             if (playerScript != null)
             {
-                if(((!playerScript._IsAttacking || !playerScript._IsGroundPound) && playerScript._IsGettingHit == false))
+               
+                if ((!playerScript._IsAttacking && !playerScript._IsGroundPound) && !playerScript._IsGettingHit)
                 {
-                    StartCoroutine(playerScript.GetHit());
+                    
+                    if (getHitCorutine == null)
+                    {
+                        onFreezeEvent?.Invoke();
+                        getHitCorutine = StartCoroutine(GetHitCoroutine());
+                    }
                 }
             }
         }
     }
-    //Recibir danio
+
+    private IEnumerator GetHitCoroutine()
+    {
+        yield return StartCoroutine(playerScript.GetHit());
+        getHitCorutine = null; 
+    }    
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy"))
@@ -38,7 +52,12 @@ public class PlayerCollision : MonoBehaviour
             {
                 if (((!playerScript._IsAttacking || !playerScript._IsGroundPound) && playerScript._IsGettingHit == false))
                 {
-                    StartCoroutine(playerScript.GetHit());
+                    if (getHitCorutine == null)
+                    {
+                        onFreezeEvent?.Invoke();
+
+                        getHitCorutine = StartCoroutine(GetHitCoroutine());
+                    }
                 }
             }
         }
