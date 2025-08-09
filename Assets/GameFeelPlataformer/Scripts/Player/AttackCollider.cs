@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttackCollider : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class AttackCollider : MonoBehaviour
     [SerializeField] private PlayerMovement playerScript;
     [SerializeField]private Collider collider;
     [SerializeField] private Rigidbody rigidbody;
-
+    public UnityEvent onFreezeEvent;
     private void Start()
     {
         playerScript = GetComponentInParent<PlayerMovement>();
@@ -21,6 +22,7 @@ public class AttackCollider : MonoBehaviour
                 Enemy enemy = other.GetComponent<Enemy>();
                 if (enemy != null)
                 {
+                    onFreezeEvent?.Invoke();
                     Debug.Log("ATACAR ENEMIGO");
                     enemy.Die();  
                 }
@@ -33,6 +35,8 @@ public class AttackCollider : MonoBehaviour
                 Caja caja = other.GetComponent<Caja>();
                 if (caja != null)
                 {
+                    onFreezeEvent?.Invoke();
+
                     caja.Romper(Caja.TipoImpacto.Golpear);
                     //return;
                 }
@@ -48,6 +52,8 @@ public class AttackCollider : MonoBehaviour
                 Enemy enemy = other.GetComponent<Enemy>();
                 if (enemy != null)
                 {
+                    onFreezeEvent?.Invoke();
+
                     enemy.Die();  
                 }
             }
@@ -59,6 +65,8 @@ public class AttackCollider : MonoBehaviour
                 Caja caja = other.GetComponent<Caja>();
                 if (caja != null)
                 {
+                    onFreezeEvent?.Invoke();
+
                     caja.Romper(Caja.TipoImpacto.Golpear);
                     //return;
                 }

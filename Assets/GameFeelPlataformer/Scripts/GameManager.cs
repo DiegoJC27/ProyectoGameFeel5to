@@ -15,12 +15,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int mangos = 0;
     [SerializeField] private int currentLifes = 3;
     public bool maskActive = false;
+    private bool gameOver = false;
 
     private void Start()
     {
         PlayerUIController.instance.UpdateMangosText(mangos);
         PlayerUIController.instance.UpdateLifesText(currentLifes);
 
+    }
+    public void GameOver()
+    {
+        gameOver = true;
     }
     public void CollectMask()
     {
@@ -50,7 +55,7 @@ public class GameManager : MonoBehaviour
         currentLifes--;
         if (currentLifes <= 0)
         {
-            //cosas para perder el juego
+            GameOver();
         }
         PlayerUIController.instance.UpdateLifesText(currentLifes - 1);
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FloorCollider : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class FloorCollider : MonoBehaviour
     [SerializeField] private Collider collider;
     [SerializeField]private Rigidbody rigidbody;
     [SerializeField]private bool hasJumpedFromBox = false;
+    public UnityEvent onFreezeEvent;
 
 
     private void Start()
@@ -21,7 +23,9 @@ public class FloorCollider : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
 
                if (enemy == null || playerScript == null) return;
-               playerScript.BoxEnemyJump();            
+            onFreezeEvent?.Invoke();
+
+            playerScript.BoxEnemyJump();            
         }
         else if (other.CompareTag("Caja"))
         {
@@ -29,6 +33,8 @@ public class FloorCollider : MonoBehaviour
             if (caja == null || playerScript == null) return;
             if (hasJumpedFromBox == false && playerScript._IsGroundPound==false)
             {
+                onFreezeEvent?.Invoke();
+
                 playerScript.BoxEnemyJump();
                 caja.Romper(Caja.TipoImpacto.Saltar);
                 hasJumpedFromBox = true;
@@ -37,6 +43,8 @@ public class FloorCollider : MonoBehaviour
             }
             else if( playerScript._IsGroundPound == true)
             {
+                onFreezeEvent?.Invoke();
+
                 caja.Romper(Caja.TipoImpacto.Golpear);
             }
         }
