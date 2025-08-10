@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float frecuency;
     [SerializeField] private Animator animator;
 
+    [Header("Sounds")]
+    [SerializeField] private PlayerSounds playerSounds;
+
+
     private Rigidbody rigidbody;
 
     void Start()
@@ -74,6 +78,15 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidbody.linearVelocity = new Vector3(0, rigidbody.linearVelocity.y, 0);
         }
+
+        bool hasInput = Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.01f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.01f;
+        bool shouldRunLoop = _IsGrounded && !_IsGroundPound && hasInput;
+
+        if (shouldRunLoop)
+            playerSounds.PlayRunLoop();
+        else
+            playerSounds.StopRunLoop();
+
     }
 
     private void Jump()
@@ -85,11 +98,14 @@ public class PlayerMovement : MonoBehaviour
             _IsGrounded = false;
             // Trigger jump animation
             animator.SetBool("IsJumping", true);
+            playerSounds.PlayJump();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && _FirstJump)
         {
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce / 2f, rigidbody.linearVelocity.z);
             _FirstJump = false;
+
+            playerSounds.PlayJump();
         }
         // Aumentar gravedad cuando cae
         if (rigidbody.linearVelocity.y < 0)
@@ -107,6 +123,8 @@ public class PlayerMovement : MonoBehaviour
             attackCollision.gameObject.SetActive(true);
 
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, -groundPoundForce, rigidbody.linearVelocity.z);
+
+            playerSounds.PlayGroundPound();
         }
     }
 
@@ -122,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Attack");
             noise.AmplitudeGain = amplitud;
             noise.FrequencyGain = frecuency;
+            playerSounds.PlayAttack();
         }
 
         if (_IsAttacking)

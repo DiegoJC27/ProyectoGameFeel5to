@@ -78,5 +78,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df5e6a0508522fe40968b2202ee89854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceClip: {fileID: 8300000, guid: dcc9a09f2b0ca4d42a0125f2fce95d99, type: 3}
+  destroyClip: {fileID: 8300000, guid: 86aa72b7f77aba24f96ca08bb42c00e8, type: 3}
+  volume: 0.5
+  spatialSound: 0
+  pitchJitter: 0.02
+  minDistance: 2
+  maxDistance: 15
   vidaPrefab: {fileID: 4554052709014125831, guid: 75eef3a722b4dc74e86e83cfe9c90394, type: 3}
   vida: 1
