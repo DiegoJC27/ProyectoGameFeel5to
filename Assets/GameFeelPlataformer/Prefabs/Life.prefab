@@ -129,3 +129,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf7784b75940334491f97cf98a3f80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  extraLifeClip: {fileID: 8300000, guid: e517ffac62c354d4f9bcad991dc95021, type: 3}
+  volume: 1
