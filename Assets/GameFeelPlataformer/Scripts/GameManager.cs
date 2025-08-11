@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        PlayerUIController.instance.UpdateLifesText(currentLifes - 1);
+        PlayerUIController.instance.UpdateLifesText(currentLifes);
 
     }
 }
