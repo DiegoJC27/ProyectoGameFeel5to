@@ -163,6 +163,8 @@ MonoBehaviour:
   targets:
   - {fileID: 0}
   - {fileID: 0}
+  killEnemyClip: {fileID: 8300000, guid: d77723b72f7f6d54b96166be6175a502, type: 3}
+  killVolume: 1
 --- !u!95 &4542612054778222021
 Animator:
   serializedVersion: 7

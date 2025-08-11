@@ -7,11 +7,15 @@ public class CajaVida : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
+        // SFX: destruir
+        PlayImpactSound(TipoImpacto.Golpear);
+
         if (vida > 0)
         {
             Instantiate(vidaPrefab, transform.position, Quaternion.identity);
             vida--;
         }
+
         Destroy(gameObject);
     }
 }

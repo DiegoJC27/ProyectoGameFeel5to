@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449145a590a5c3b45926784e70375c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maskClip: {fileID: 8300000, guid: fa1a6ec151ec78245b2d80562c6d8e17, type: 3}
+  volume: 1

@@ -126,6 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb72e6a54549b94a9a19b5b7330471b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceClip: {fileID: 8300000, guid: dcc9a09f2b0ca4d42a0125f2fce95d99, type: 3}
+  destroyClip: {fileID: 8300000, guid: 86aa72b7f77aba24f96ca08bb42c00e8, type: 3}
+  volume: 0.5
+  spatialSound: 0
+  pitchJitter: 0.02
+  minDistance: 2
+  maxDistance: 15
   mangoPrefab: {fileID: 7786071406801373546, guid: cd3079551f2df1945869c47463f57e62, type: 3}
   mangosSaltando: 5
   mangosGolpe: 2
