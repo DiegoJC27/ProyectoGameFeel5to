@@ -24,7 +24,7 @@ public class CajaNormal : Caja
         {
             for (int i = 0; i < mangosGolpe; i++)
             {
-                Instantiate(mangoPrefab, transform.position + Vector3.up, Quaternion.identity);
+                Instantiate(mangoPrefab, transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);

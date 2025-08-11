@@ -120,8 +120,11 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("ataque");
             // Trigger attack animation
             animator.SetTrigger("Attack");
-            noise.AmplitudeGain = amplitud;
-            noise.FrequencyGain = frecuency;
+            if (!_IsGettingHit)
+            {
+                noise.AmplitudeGain = amplitud;
+                noise.FrequencyGain = frecuency;
+            }
         }
 
         if (_IsAttacking)
@@ -149,8 +152,11 @@ public class PlayerMovement : MonoBehaviour
         _IsGettingHit = true;
         GameManager.instance.LoseLife();
         Debug.Log("Recibir danio");
-        noise.AmplitudeGain = 3.7f;
-        noise.FrequencyGain = 0.08f;
+        if (!_IsAttacking)
+        {
+            noise.AmplitudeGain = 3.7f;
+            noise.FrequencyGain = 0.08f;
+        }
         //animacion de danio
         yield return new WaitForSeconds(1);
         noise.AmplitudeGain = 0f;

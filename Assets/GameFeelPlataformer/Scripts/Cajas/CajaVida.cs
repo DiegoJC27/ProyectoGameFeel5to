@@ -9,7 +9,7 @@ public class CajaVida : Caja
     {
         if (vida > 0)
         {
-            Instantiate(vidaPrefab, transform.position + Vector3.up, Quaternion.identity);
+            Instantiate(vidaPrefab, transform.position, Quaternion.identity);
             vida--;
         }
         Destroy(gameObject);
