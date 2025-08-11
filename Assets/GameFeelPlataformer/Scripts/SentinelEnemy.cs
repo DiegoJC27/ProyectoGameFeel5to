@@ -9,8 +9,8 @@ public class SentinelEnemy : MonoBehaviour
     [SerializeField]
     private float cooldown = 2f;
 
-    [SerializeField]
-    private Collider damageCollider; //Collider del arma
+    //[SerializeField]
+    //private Collider damageCollider; //Collider del arma
 
     void Start()
     {
@@ -27,10 +27,10 @@ public class SentinelEnemy : MonoBehaviour
         while (true)
         {
             //Se activa el daño
-            if (damageCollider != null)
-            {
-                damageCollider.enabled = true;
-            }
+            //if (damageCollider != null)
+            //{
+            //    damageCollider.enabled = true;
+            //}
             //Girar durante segundos de spinDuration
             float rotated = 0f;
             while (rotated < 360f)
@@ -40,11 +40,11 @@ public class SentinelEnemy : MonoBehaviour
                 rotated += step;
                 yield return null;
             }
-            //Desactivar daño
-            if (damageCollider != null)
-            {
-                damageCollider.enabled = false;
-            }
+            ////Desactivar daño
+            //if (damageCollider != null)
+            //{
+            //    damageCollider.enabled = false;
+            //}
             //Espera cooldown
             yield return new WaitForSeconds(cooldown);
         }
