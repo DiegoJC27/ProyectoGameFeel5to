@@ -29,11 +29,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private CinemachineBasicMultiChannelPerlin noise;
     [SerializeField] private float amplitud;
     [SerializeField] private float frecuency;
+    
+    [Header("Animator")]
     [SerializeField] private Animator animator;
 
     [Header("Sounds")]
     [SerializeField] private PlayerSounds playerSounds;
 
+    [Header("WallChecks")]
+    [SerializeField] private Transform feetBump;
+    [SerializeField] private Transform chestBump;
+    [SerializeField] private float feetDistance;
+    [SerializeField] private float chestDistance;
+    public LayerMask wallLayer;
 
     private Rigidbody rigidbody;
 
@@ -51,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         GroundPound();
         Attack();
+        CheckWall(chestBump);
+        CheckWall(feetBump);
     }
-
+    Vector3 move = Vector3.zero;
     private void Movement()
     {
-        Vector3 move = Vector3.zero;
+        move = Vector3.zero;
 
         if (!_IsGroundPound)
             move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, (Input.GetAxisRaw("Vertical")));
@@ -69,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 rotation = new Vector3(move.x, 0, move.z);
             Quaternion targetRotation = Quaternion.LookRotation(rotation);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 20);
 
             //move = move.normalized * speed;
             //rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
@@ -87,6 +97,15 @@ public class PlayerMovement : MonoBehaviour
         else
             playerSounds.StopRunLoop();
 
+    }
+    private void CheckWall(Transform pos) 
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, chestDistance, wallLayer))
+        {
+            if (pos == chestBump) move = new Vector3(0, transform.position.y, 0);
+            //else move = new Vector3(0, .2f, 0);
+        }
+        Debug.DrawRay(transform.position, transform.forward * chestDistance, Color.red);
     }
 
     private void Jump()
@@ -138,8 +157,11 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("ataque");
             // Trigger attack animation
             animator.SetTrigger("Attack");
-            noise.AmplitudeGain = amplitud;
-            noise.FrequencyGain = frecuency;
+            if (!_IsGettingHit)
+            {
+                noise.AmplitudeGain = amplitud;
+                noise.FrequencyGain = frecuency;
+            }
             playerSounds.PlayAttack();
         }
 
@@ -168,8 +190,11 @@ public class PlayerMovement : MonoBehaviour
         _IsGettingHit = true;
         GameManager.instance.LoseLife();
         Debug.Log("Recibir danio");
-        noise.AmplitudeGain = 3.7f;
-        noise.FrequencyGain = 0.08f;
+        if (!_IsAttacking)
+        {
+            noise.AmplitudeGain = 3.7f;
+            noise.FrequencyGain = 0.08f;
+        }
         //animacion de danio
         yield return new WaitForSeconds(1);
         noise.AmplitudeGain = 0f;

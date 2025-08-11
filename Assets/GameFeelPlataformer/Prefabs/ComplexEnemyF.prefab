@@ -22,31 +22,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000023392
+      value: 0.141676
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.79
+      value: 0.120000005
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.62
+      value: 4.4580154
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6581435
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7528926
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 97.683
       objectReference: {fileID: 0}
     - target: {fileID: 157825934238464424, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 683251322737189650, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_Name
       value: ComplexEnemyF
+      objectReference: {fileID: 0}
+    - target: {fileID: 683251322737189650, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 965495599781524318, guid: 9c3f20961d63ae8408c20d3ad1076f7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,7 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  targets: []
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   killEnemyClip: {fileID: 8300000, guid: d77723b72f7f6d54b96166be6175a502, type: 3}
   killVolume: 1
 --- !u!95 &8653014883441275730
