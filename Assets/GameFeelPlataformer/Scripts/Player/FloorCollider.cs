@@ -24,7 +24,7 @@ public class FloorCollider : MonoBehaviour
 
                if (enemy == null || playerScript == null) return;
             onFreezeEvent?.Invoke();
-
+            enemy.Die();
             playerScript.BoxEnemyJump();            
         }
         else if (other.CompareTag("Caja"))

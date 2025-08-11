@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &123829234682384201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3573056296507299156}
+  m_Layer: 0
+  m_Name: FeetRaycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3573056296507299156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123829234682384201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.152, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1040687173412018508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6303623468183828590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741479461375525860}
+  m_Layer: 0
+  m_Name: ChestRaycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741479461375525860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6303623468183828590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.887, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1040687173412018508}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &652121306339689123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_Name
-      value: Jammo_Player Variant
+      value: PlayerPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 4757836856755875627, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_Enabled
@@ -69,8 +131,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6988250413389837366}
     - target: {fileID: 8216981206540712241, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: feetBump
+      value: 
+      objectReference: {fileID: 3573056296507299156}
+    - target: {fileID: 8216981206540712241, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: chestBump
+      value: 
+      objectReference: {fileID: 741479461375525860}
+    - target: {fileID: 8216981206540712241, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: jumpForce
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216981206540712241, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: feetDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8216981206540712241, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      propertyPath: chestDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8216981206540712241, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: fallMultiplier
@@ -83,7 +161,13 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4757836856755875627, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3573056296507299156}
+    - targetCorrespondingSourceObject: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 741479461375525860}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       insertIndex: -1
@@ -95,6 +179,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1973306472932306945}
   m_SourcePrefab: {fileID: 100100000, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+--- !u!4 &1040687173412018508 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
+  m_PrefabInstance: {fileID: 652121306339689123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4047076491825097567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
@@ -162,6 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eff9f81447a3b41a42aa41d60de29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onFreezeEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &6988250413389837366 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7635726066119915157, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
