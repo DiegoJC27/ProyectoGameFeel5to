@@ -9,10 +9,13 @@ public class PauseMenu : MonoBehaviour
     private bool gamePaused;
     private const float TWEEN_TIME = 0.3f;
     private Tween pauseTween;
+
+    public GameObject buttons;
     void Start()
     {
         gamePaused = false;
         canvasGroup.alpha = 0;
+        buttons.SetActive(false);
     }
 
     void Update()
@@ -23,6 +26,8 @@ public class PauseMenu : MonoBehaviour
     public void TogglePause(bool paused)
     {
         Time.timeScale = paused ? 0 : 1;
+
+        buttons.SetActive(paused);
 
         float canvasAlpha = paused ? 1 : 0;
 

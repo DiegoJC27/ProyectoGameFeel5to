@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentLifes = 3;
     public bool maskActive = false;
     private bool gameOver = false;
+    [SerializeField] MenuController menuController;
 
     private void Start()
     {
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         if (currentLifes <= 0)
         {
             GameOver();
+            menuController.GameLost();
         }
         PlayerUIController.instance.UpdateLifesText(currentLifes);
 
