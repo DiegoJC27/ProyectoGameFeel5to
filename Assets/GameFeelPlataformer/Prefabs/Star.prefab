@@ -62,7 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1801807646703848077, guid: 5151591354fd80f448e91914496d97d1, type: 3}
       propertyPath: m_Name
-      value: Mask
+      value: Star
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801807646703848077, guid: 5151591354fd80f448e91914496d97d1, type: 3}
+      propertyPath: m_TagString
+      value: Star
       objectReference: {fileID: 0}
     - target: {fileID: 5344439079807843548, guid: 5151591354fd80f448e91914496d97d1, type: 3}
       propertyPath: isScaling

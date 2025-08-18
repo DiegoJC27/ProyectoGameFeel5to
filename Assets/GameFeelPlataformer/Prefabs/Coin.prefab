@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 6954758372675618198, guid: 6a301d09debaf1e4a8d3e2657cc44a96, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 7768589822984281900, guid: 6a301d09debaf1e4a8d3e2657cc44a96, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.3

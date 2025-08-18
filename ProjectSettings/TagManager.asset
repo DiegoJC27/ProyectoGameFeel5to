@@ -7,6 +7,9 @@ TagManager:
   - PlayerEyes
   - Caja
   - Enemy
+  - Life
+  - Coin
+  - Star
   layers:
   - Default
   - TransparentFX

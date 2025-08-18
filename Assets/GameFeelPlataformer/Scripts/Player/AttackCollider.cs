@@ -8,6 +8,7 @@ public class AttackCollider : MonoBehaviour
     [SerializeField]private Collider collider;
     [SerializeField] private Rigidbody rigidbody;
     public UnityEvent onFreezeEvent;
+    public SoundManager playerSoundManager;
     private void Start()
     {
         playerScript = GetComponentInParent<PlayerMovement>();
@@ -24,6 +25,7 @@ public class AttackCollider : MonoBehaviour
                 {
                     onFreezeEvent?.Invoke();
                     Debug.Log("ATACAR ENEMIGO");
+                    playerSoundManager.PlaySound("EnemyKill");
                     enemy.Die();  
                 }
             }
@@ -53,6 +55,7 @@ public class AttackCollider : MonoBehaviour
                 if (enemy != null)
                 {
                     onFreezeEvent?.Invoke();
+                    playerSoundManager.PlaySound("EnemyKill");
 
                     enemy.Die();  
                 }

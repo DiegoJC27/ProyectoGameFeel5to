@@ -12,6 +12,7 @@ public class CajaNormal : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
+        base.Romper(tipo);
         if (tipo == TipoImpacto.Saltar)
         {
             PlayImpactSound(TipoImpacto.Saltar); // bounce
@@ -33,7 +34,6 @@ public class CajaNormal : Caja
             for (int i = 0; i < mangosGolpe; i++)
                 Instantiate(mangoPrefab, transform.position, Quaternion.identity);
 
-            Destroy(gameObject);
         }
     }
 }

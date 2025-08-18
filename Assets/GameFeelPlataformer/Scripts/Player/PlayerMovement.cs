@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("Sounds")]
-    [SerializeField] private PlayerSounds playerSounds;
+    [SerializeField] private SoundManager playerSoundManager;
 
     [Header("WallChecks")]
     [SerializeField] private Transform feetBump;
@@ -93,10 +93,10 @@ public class PlayerMovement : MonoBehaviour
         bool shouldRunLoop = _IsGrounded && !_IsGroundPound && hasInput;
 
         if (shouldRunLoop)
-            playerSounds.PlayRunLoop();
+            playerSoundManager?.PlaySound("Run");
+        
         else
-            playerSounds.StopRunLoop();
-
+            playerSoundManager?.StopSound("Run");
     }
     private void CheckWall(Transform pos) 
     {
@@ -117,14 +117,14 @@ public class PlayerMovement : MonoBehaviour
             _IsGrounded = false;
             // Trigger jump animation
             animator.SetBool("IsJumping", true);
-            playerSounds.PlayJump();
+            playerSoundManager?.PlaySound("Jump");
         }
         else if (Input.GetKeyDown(KeyCode.Space) && _FirstJump)
         {
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce / 2f, rigidbody.linearVelocity.z);
             _FirstJump = false;
 
-            playerSounds.PlayJump();
+            playerSoundManager?.PlaySound("Jump");
         }
         // Aumentar gravedad cuando cae
         if (rigidbody.linearVelocity.y < 0)
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
 
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, -groundPoundForce, rigidbody.linearVelocity.z);
 
-            playerSounds.PlayGroundPound();
+            playerSoundManager?.PlaySound("GroundPound");
         }
     }
 
@@ -162,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
                 noise.AmplitudeGain = amplitud;
                 noise.FrequencyGain = frecuency;
             }
-            playerSounds.PlayAttack();
+            playerSoundManager?.PlaySound("Atack");
         }
 
         if (_IsAttacking)
@@ -190,6 +190,8 @@ public class PlayerMovement : MonoBehaviour
         _IsGettingHit = true;
         GameManager.instance.LoseLife();
         Debug.Log("Recibir danio");
+        playerSoundManager.PlaySound("LoseLife");
+
         if (!_IsAttacking)
         {
             noise.AmplitudeGain = 3.7f;

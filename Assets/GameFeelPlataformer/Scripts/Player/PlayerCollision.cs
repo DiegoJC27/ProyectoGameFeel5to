@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
     PlayerMovement playerScript;
     Coroutine getHitCorutine;
     public UnityEvent onFreezeEvent;
+    [SerializeField] SoundManager collectibleSounds;
     private void Start()
     {
         playerScript = GetComponent<PlayerMovement>();
@@ -17,7 +18,16 @@ public class PlayerCollision : MonoBehaviour
     {
         Collectibles col = other.GetComponent<Collectibles>();
         if (col != null)
-            col.OnCollideWithPlayer();
+        {
+            if (other.CompareTag("Coin"))
+                collectibleSounds.PlaySound("Coin");
+            else if(other.CompareTag("Life"))
+                collectibleSounds.PlaySound("Life");
+            else if(other.CompareTag("Star"))
+                collectibleSounds.PlaySound("Star");
+
+                col.OnCollideWithPlayer();            
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,6 +41,7 @@ public class PlayerCollision : MonoBehaviour
                     
                     if (getHitCorutine == null)
                     {
+
                         onFreezeEvent?.Invoke();
                         getHitCorutine = StartCoroutine(GetHitCoroutine());
                     }
