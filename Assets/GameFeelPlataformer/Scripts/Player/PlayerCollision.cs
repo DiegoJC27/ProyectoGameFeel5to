@@ -8,10 +8,11 @@ public class PlayerCollision : MonoBehaviour
     Coroutine getHitCorutine;
     public UnityEvent onFreezeEvent;
     [SerializeField] SoundManager collectibleSounds;
+    Animator animator; 
     private void Start()
     {
         playerScript = GetComponent<PlayerMovement>();
-    
+        animator = GetComponent<Animator>();
     }
     //Recolectables
     private void OnTriggerEnter(Collider other)
@@ -41,7 +42,7 @@ public class PlayerCollision : MonoBehaviour
                     
                     if (getHitCorutine == null)
                     {
-
+                        animator.SetTrigger("GetHit");
                         onFreezeEvent?.Invoke();
                         getHitCorutine = StartCoroutine(GetHitCoroutine());
                     }

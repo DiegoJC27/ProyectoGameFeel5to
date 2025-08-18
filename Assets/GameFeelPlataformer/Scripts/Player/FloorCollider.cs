@@ -7,6 +7,7 @@ public class FloorCollider : MonoBehaviour
     [SerializeField]private PlayerMovement playerScript;
     [SerializeField] private Collider collider;
     [SerializeField]private Rigidbody rigidbody;
+    [SerializeField] private Animator animator;
     [SerializeField]private bool hasJumpedFromBox = false;
     public UnityEvent onFreezeEvent;
     public SoundManager playerSoundManager;
@@ -15,6 +16,7 @@ public class FloorCollider : MonoBehaviour
     private void Start()
     {
         playerScript = GetComponentInParent<PlayerMovement>();
+        animator = GetComponentInParent<Animator>();
         rigidbody = GetComponentInParent<Rigidbody>();
     }
     private void OnTriggerEnter(Collider other)
@@ -46,7 +48,7 @@ public class FloorCollider : MonoBehaviour
             else if( playerScript._IsGroundPound == true)
             {
                 onFreezeEvent?.Invoke();
-
+                animator.SetTrigger("GroundPound");
                 caja.Romper(Caja.TipoImpacto.Golpear);
             }
         }
