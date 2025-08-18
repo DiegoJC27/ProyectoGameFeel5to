@@ -7,10 +7,10 @@ public class CajaMascara : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
+        base.Romper(tipo);
         // SFX: destruir
         PlayImpactSound(TipoImpacto.Golpear);
 
         Instantiate(mascaraPrefab, transform.position + Vector3.up, Quaternion.identity);
-        Destroy(gameObject);
     }
 }

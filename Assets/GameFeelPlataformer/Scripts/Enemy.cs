@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour
     Transform currentTarget;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip killEnemyClip;   // asigna aquí tu SFX
     [SerializeField, Range(0f, 1f)] private float killVolume = 1f;
 
     // Evita muerte doble por colisiones múltiples
@@ -54,12 +53,6 @@ public class Enemy : MonoBehaviour
     {
         if (isDying) return;
         isDying = true;
-
-        // SFX de derrota (no se corta al destruir el enemigo)
-        if (killEnemyClip != null)
-        {
-            AudioSource.PlayClipAtPoint(killEnemyClip, transform.position, killVolume);
-        }
 
         //  Desactivar colisiones y render para evitar más triggers/bugs visuales
         var col = GetComponent<Collider>();

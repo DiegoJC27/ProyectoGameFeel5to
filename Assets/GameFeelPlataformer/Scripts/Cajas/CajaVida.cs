@@ -7,6 +7,7 @@ public class CajaVida : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
+        base.Romper(tipo);
         // SFX: destruir
         PlayImpactSound(TipoImpacto.Golpear);
 
@@ -16,6 +17,5 @@ public class CajaVida : Caja
             vida--;
         }
 
-        Destroy(gameObject);
     }
 }

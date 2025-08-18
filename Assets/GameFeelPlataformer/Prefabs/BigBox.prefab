@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5838892538631477163, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      propertyPath: soundList.Array.data[1].volume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6635619932551645078, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_Name
       value: BigBox
@@ -66,6 +70,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7231534000357800125}
   m_SourcePrefab: {fileID: 100100000, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+--- !u!114 &294124662471244863 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5838892538631477163, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+  m_PrefabInstance: {fileID: 6130271012090637204}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c233c13c450b9fa4899ca32a0faa6c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &650044650827508738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6635619932551645078, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
@@ -83,8 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c273d0b4eb48499aedbdda0311a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceClip: {fileID: 8300000, guid: dcc9a09f2b0ca4d42a0125f2fce95d99, type: 3}
-  destroyClip: {fileID: 8300000, guid: 86aa72b7f77aba24f96ca08bb42c00e8, type: 3}
+  boxSoundManager: {fileID: 294124662471244863}
   volume: 0.505
   spatialSound: 0
   pitchJitter: 0.02

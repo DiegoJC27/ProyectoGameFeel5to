@@ -128,8 +128,50 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
     audioSource: {fileID: 0}
-  - audioName: Run
-    audioClip: {fileID: 8300000, guid: 07d93285fff74cd4d9c6ad86d9d8f3cf, type: 3}
+  - audioName: BoxDestroy
+    audioClip: {fileID: 8300000, guid: 86aa72b7f77aba24f96ca08bb42c00e8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
+    audioSource: {fileID: 0}
+  - audioName: Coin
+    audioClip: {fileID: 8300000, guid: 65835bb2a603a5d46b16d5ef7629b544, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
+    audioSource: {fileID: 0}
+  - audioName: GainLife
+    audioClip: {fileID: 8300000, guid: e517ffac62c354d4f9bcad991dc95021, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
+    audioSource: {fileID: 0}
+  - audioName: GrounPound
+    audioClip: {fileID: 8300000, guid: 5a357cd260ed3ee45b327de7c1ec1a61, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
+    audioSource: {fileID: 0}
+  - audioName: EnemyKill
+    audioClip: {fileID: 8300000, guid: d77723b72f7f6d54b96166be6175a502, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
+    audioSource: {fileID: 0}
+  - audioName: LoseLife
+    audioClip: {fileID: 8300000, guid: cb648f88ab0c30644b73d0807b73d7c4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    mixerGroup: {fileID: -7177480745570471334, guid: ec8f36f358233b44aa14ba63398bb89b, type: 2}
+    audioSource: {fileID: 0}
+  - audioName: Star
+    audioClip: {fileID: 8300000, guid: fa1a6ec151ec78245b2d80562c6d8e17, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

@@ -9,6 +9,7 @@ public class CajaGrande : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
+        base.Romper(tipo);
         if (tipo == TipoImpacto.Saltar)
         {
             // SFX: rebote
@@ -41,7 +42,6 @@ public class CajaGrande : Caja
                 }
             }
 
-            Destroy(gameObject);
         }
     }
 }

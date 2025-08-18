@@ -49,6 +49,12 @@ public class SoundManager : MonoBehaviour
         sound.audioSource?.Play();
     }
 
+    public void PlayOneShotSound(string name)
+    {
+        Sound sound = FindSound(name);
+        sound.audioSource?.PlayOneShot(sound.audioClip);
+    }
+
     public void StopSound(string name)
     {
         Sound sound = FindSound(name);

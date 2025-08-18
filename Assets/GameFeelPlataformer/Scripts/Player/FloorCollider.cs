@@ -10,6 +10,7 @@ public class FloorCollider : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField]private bool hasJumpedFromBox = false;
     public UnityEvent onFreezeEvent;
+    public SoundManager playerSoundManager;
 
 
     private void Start()
@@ -26,6 +27,7 @@ public class FloorCollider : MonoBehaviour
 
                if (enemy == null || playerScript == null) return;
             onFreezeEvent?.Invoke();
+            playerSoundManager.PlaySound("EnemyKill");
             enemy.Die();
             playerScript.BoxEnemyJump();            
         }
