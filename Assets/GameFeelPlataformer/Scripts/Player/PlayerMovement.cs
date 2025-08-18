@@ -116,14 +116,15 @@ public class PlayerMovement : MonoBehaviour
             _FirstJump = true;
             _IsGrounded = false;
             // Trigger jump animation
-            animator.SetBool("IsJumping", true);
+            animator.SetTrigger("Jump");
+            animator.SetBool("isGrounded", false);
             playerSounds.PlayJump();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && _FirstJump)
         {
             rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce / 2f, rigidbody.linearVelocity.z);
             _FirstJump = false;
-
+            animator.SetTrigger("Jump");
             playerSounds.PlayJump();
         }
         // Aumentar gravedad cuando cae
@@ -183,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
     public void BoxEnemyJump()
     {
         rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x, jumpForce, rigidbody.linearVelocity.z);
-        animator.SetBool("IsJumping", true);
+        animator.SetTrigger("Jump");
     }
     public IEnumerator GetHit()
     {
@@ -213,7 +214,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _IsGrounded = true;
             _FirstJump = false;
-            animator.SetBool("IsJumping", false);
+            animator.SetBool("isGrounded",true);
+            //animator.SetBool("isGrounded", false);
+
         }
     }
     IEnumerator GroundPoundFinishing()
@@ -221,11 +224,12 @@ public class PlayerMovement : MonoBehaviour
         noise.AmplitudeGain = amplitud;
         noise.FrequencyGain = frecuency;
         yield return new WaitForSeconds(.5f);
+        animator.SetTrigger("GroundPoundLand");
         _IsGrounded = true;
         _IsGroundPound = false;
         attackCollision.gameObject.SetActive(false);
         noise.AmplitudeGain = 0f;
         noise.FrequencyGain = 0f;
-        animator.SetBool("IsJumping", false);
+        //animator.SetBool("IsJumping", false);
     }
 }
