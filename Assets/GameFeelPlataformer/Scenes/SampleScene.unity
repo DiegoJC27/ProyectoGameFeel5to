@@ -10055,15 +10055,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232728760474406960, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
       propertyPath: soundList.Array.data[0].volume
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5232728760474406960, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
       propertyPath: soundList.Array.data[1].volume
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5232728760474406960, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
       propertyPath: soundList.Array.data[2].volume
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5232728760474406960, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
       propertyPath: soundList.Array.data[3].audioClip

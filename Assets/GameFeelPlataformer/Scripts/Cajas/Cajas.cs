@@ -40,6 +40,8 @@ public abstract class Caja : MonoBehaviour
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();
         mesh.enabled = false;
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false;
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }

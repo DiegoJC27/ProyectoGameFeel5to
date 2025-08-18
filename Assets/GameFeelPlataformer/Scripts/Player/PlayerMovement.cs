@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool _IsGrounded = false;
     [SerializeField] public bool _IsAttacking = false;
     [SerializeField] public bool _IsGettingHit = false;
+    [SerializeField] public bool _IsWalking = false;
 
     [Header("AttackColision")]
     [SerializeField]private GameObject attackCollision;
@@ -92,11 +93,17 @@ public class PlayerMovement : MonoBehaviour
         bool hasInput = Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.01f || Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0.01f;
         bool shouldRunLoop = _IsGrounded && !_IsGroundPound && hasInput;
 
-        if (shouldRunLoop)
+        if (shouldRunLoop && !_IsWalking)
+        {
+            _IsWalking = true;
             playerSoundManager?.PlaySound("Run");
-        
+        }
+
         else
+        {
+            _IsWalking = false;
             playerSoundManager?.StopSound("Run");
+        }
     }
     private void CheckWall(Transform pos) 
     {
