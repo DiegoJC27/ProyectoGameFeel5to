@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             playerSoundManager?.PlaySound("Run");
         }
 
-        else
+        else if (!shouldRunLoop && _IsWalking)
         {
             _IsWalking = false;
             playerSoundManager?.StopSound("Run");

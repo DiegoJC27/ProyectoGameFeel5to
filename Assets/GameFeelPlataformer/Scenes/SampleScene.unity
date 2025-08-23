@@ -10087,7 +10087,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 5a357cd260ed3ee45b327de7c1ec1a61, type: 3}
     - target: {fileID: 5232728760474406960, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
       propertyPath: soundList.Array.data[5].audioName
-      value: GrounPound
+      value: GroundPound
       objectReference: {fileID: 0}
     - target: {fileID: 5232728760474406960, guid: b6e333083edea7a4eb5f1f5f17325ca3, type: 3}
       propertyPath: soundList.Array.data[6].audioClip
