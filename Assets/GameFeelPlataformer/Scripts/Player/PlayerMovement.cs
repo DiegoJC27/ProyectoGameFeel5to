@@ -60,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         GroundPound();
         Attack();
-        CheckWall(chestBump);
-        CheckWall(feetBump);
+        //CheckWall(chestBump);
+        //CheckWall(feetBump);
     }
     Vector3 move = Vector3.zero;
     private void Movement()
@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             playerSoundManager?.StopSound("Run");
         }
     }
-    private void CheckWall(Transform pos) 
+    private void CheckWall(Transform pos)
     {
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, chestDistance, wallLayer))
         {
