@@ -39,9 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("WallChecks")]
     [SerializeField] private Transform feetBump;
+    [SerializeField] private Transform ancleBump;
     [SerializeField] private Transform chestBump;
-    [SerializeField] private float feetDistance;
-    [SerializeField] private float chestDistance;
+    [SerializeField] private float rayDistance;
+
     public LayerMask wallLayer;
 
     private Rigidbody rigidbody;
@@ -60,8 +61,6 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         GroundPound();
         Attack();
-        //CheckWall(chestBump);
-        //CheckWall(feetBump);
     }
     Vector3 move = Vector3.zero;
     private void Movement()
@@ -69,21 +68,21 @@ public class PlayerMovement : MonoBehaviour
         move = Vector3.zero;
 
         if (!_IsGroundPound)
-            move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, (Input.GetAxisRaw("Vertical")));
+            move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
         move = move.normalized * speed;
+
+        CheckWall();
+
         rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
 
-        // Update walk/run animation
         animator.SetFloat("Speed", move.magnitude);
 
         if (move != Vector3.zero)
         {
             Vector3 rotation = new Vector3(move.x, 0, move.z);
             Quaternion targetRotation = Quaternion.LookRotation(rotation);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 20);
-
-            //move = move.normalized * speed;
-            //rigidbody.linearVelocity = new Vector3(move.x, rigidbody.linearVelocity.y, move.z);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10);
         }
         else
         {
@@ -98,21 +97,38 @@ public class PlayerMovement : MonoBehaviour
             _IsWalking = true;
             playerSoundManager?.PlaySound("Run");
         }
-
         else if (!shouldRunLoop && _IsWalking)
         {
             _IsWalking = false;
             playerSoundManager?.StopSound("Run");
         }
     }
-    private void CheckWall(Transform pos)
+
+    private void CheckWall()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, chestDistance, wallLayer))
+        RaycastHit chestHit;
+        RaycastHit feetHit;
+        RaycastHit ancleHit;
+
+        bool chestBlocked = Physics.Raycast(chestBump.position, transform.forward, out chestHit, rayDistance, wallLayer);
+        bool feetBlocked = Physics.Raycast(feetBump.position, transform.forward, out feetHit, rayDistance, wallLayer);
+        bool ancleBlocked = Physics.Raycast(ancleBump.position, transform.forward, out ancleHit, rayDistance, wallLayer);
+
+        Debug.DrawRay(chestBump.position, transform.forward * rayDistance, Color.red);
+        Debug.DrawRay(feetBump.position, transform.forward * rayDistance, Color.blue);
+        Debug.DrawRay(ancleBump.position, transform.forward * rayDistance, Color.blue);
+        if (chestBlocked && (feetBlocked || ancleBlocked))
         {
-            if (pos == chestBump) move = new Vector3(0, transform.position.y, 0);
-            //else move = new Vector3(0, .2f, 0);
+            if (Mathf.Abs(move.x) > 0.01f)
+                move = new Vector3(move.x * .01f, move.y, move.z * .01f);
+
+            if (Mathf.Abs(move.z) > 0.01f)
+                move = new Vector3(move.x * .01f, move.y, move.z * .01f);
         }
-        Debug.DrawRay(transform.position, transform.forward * chestDistance, Color.red);
+        else if ((feetBlocked || ancleBlocked) && !chestBlocked)
+        {
+            rigidbody.linearVelocity = new Vector3(rigidbody.linearVelocity.x,3f,rigidbody.linearVelocity.z);
+        }
     }
 
     private void Jump()
