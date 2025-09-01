@@ -1,11 +1,14 @@
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject gameOverMenu;
     [SerializeField] GameObject gameWonMenu;
+    [SerializeField] TextMeshProUGUI coinsCollectedWon;
+    [SerializeField] TextMeshProUGUI coinsCollectedLose;
     public void ExitButton()
     {
 #if UNITY_EDITOR
@@ -26,12 +29,19 @@ public class MenuController : MonoBehaviour
 
     public void GameLost()
     {
+        GetCoinsCollected();
         gameOverMenu.SetActive(true);
-        Time.timeScale = 0;
     }
     public void GameWon()
     {
+        GetCoinsCollected();
         gameWonMenu.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    private void GetCoinsCollected()
+    {
+        coinsCollectedLose.text = PlayerUIController.instance.mangosText.text;
+        coinsCollectedWon.text = PlayerUIController.instance.mangosText.text;
     }
 }
