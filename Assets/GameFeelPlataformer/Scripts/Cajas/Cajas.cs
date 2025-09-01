@@ -9,11 +9,6 @@ public abstract class Caja : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private SoundManager boxSoundManager;
-    [SerializeField, Range(0f, 1f)] private float volume = 1f;
-    [SerializeField] private bool spatialSound = false; // false=2D, true=3D
-    [SerializeField, Range(0f, 0.1f)] private float pitchJitter = 0.02f;
-    [SerializeField] private float minDistance = 2f;
-    [SerializeField] private float maxDistance = 15f;
     bool isBeingDestroyed = false;
     /// Llama esto en los hijos cuando reciban impacto.
     protected void PlayImpactSound(TipoImpacto tipo)
@@ -36,7 +31,7 @@ public abstract class Caja : MonoBehaviour
             StartCoroutine(RomperCaja());
         }
     }
-    IEnumerator RomperCaja()
+    protected IEnumerator RomperCaja()
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();
         mesh.enabled = false;
