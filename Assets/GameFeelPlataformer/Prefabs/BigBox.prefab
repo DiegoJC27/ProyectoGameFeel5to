@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5136834845145899036, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3581658508463639989, guid: 5612bfa16cecbf64eb3725dd1813215e, type: 3}
     - target: {fileID: 5838892538631477163, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: soundList.Array.data[1].volume
       value: 0.2
@@ -60,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigBox
       objectReference: {fileID: 0}
+    - target: {fileID: 6978145804208703203, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ce9745802a1a1aa4eb22f567709ee227, type: 2}
     m_RemovedComponents:
     - {fileID: 3587308789838568095, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
     - {fileID: 5649587208468002933, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
