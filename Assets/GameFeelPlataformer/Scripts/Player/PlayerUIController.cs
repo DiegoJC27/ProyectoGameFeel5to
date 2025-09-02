@@ -12,8 +12,8 @@ public class PlayerUIController : MonoBehaviour
             instance = this;
     }
 
-    [SerializeField] TextMeshProUGUI mangosText;
-    [SerializeField] TextMeshProUGUI lifeText;
+    public TextMeshProUGUI mangosText;
+    public TextMeshProUGUI lifeText;
 
     public void UpdateMangosText(int q)
     {

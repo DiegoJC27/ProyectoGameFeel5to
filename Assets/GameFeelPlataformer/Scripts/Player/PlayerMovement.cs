@@ -227,6 +227,10 @@ public class PlayerMovement : MonoBehaviour
             noise.AmplitudeGain = 3.7f;
             noise.FrequencyGain = 0.08f;
         }
+
+        MaterialFlicker mf = GetComponent<MaterialFlicker>();
+        mf.FlickerMaterial();
+
         //animacion de danio
         yield return new WaitForSeconds(1);
         noise.AmplitudeGain = 0f;
