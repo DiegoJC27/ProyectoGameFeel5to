@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
         gamePaused = false;
         canvasGroup.alpha = 0;
         buttons.SetActive(false);
-        uiSoundManager.PlaySound("GameplayTheme");
+        uiSoundManager.FadeInSound("GameplayTheme", 2);
 
     }
 
