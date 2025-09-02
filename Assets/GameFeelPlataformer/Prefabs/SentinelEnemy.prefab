@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_CullingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3089122551209492191, guid: fc5af35b34be83e40b08b19f3552fec9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4447582344295465313, guid: fc5af35b34be83e40b08b19f3552fec9, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -107,6 +111,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7778146195038817721, guid: fc5af35b34be83e40b08b19f3552fec9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5429900270371046292}
+    - targetCorrespondingSourceObject: {fileID: 7778146195038817721, guid: fc5af35b34be83e40b08b19f3552fec9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7782819979481728913}
   m_SourcePrefab: {fileID: 100100000, guid: fc5af35b34be83e40b08b19f3552fec9, type: 3}
 --- !u!4 &424718434371090881 stripped
 Transform:
@@ -138,6 +145,29 @@ MonoBehaviour:
   spinSpeed: 360
   cooldown: 2
   damageCollider: {fileID: 2605318482894691887}
+--- !u!136 &7782819979481728913
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280263469748170057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 63.09
+  m_Height: 13.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 83.2, z: 0}
 --- !u!4 &7945301512721790963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6969978402093143811, guid: fc5af35b34be83e40b08b19f3552fec9, type: 3}
