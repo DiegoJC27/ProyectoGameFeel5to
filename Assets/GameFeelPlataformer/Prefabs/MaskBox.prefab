@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8149091310364430142}
   - component: {fileID: 2019046082781285947}
   - component: {fileID: 5698478892023177727}
-  - component: {fileID: 8292954321149236491}
   - component: {fileID: 420100247685292591}
+  - component: {fileID: 7728445961345802248}
   m_Layer: 0
   m_Name: MaskBox
   m_TagString: Caja
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.48976788, y: 0.37544823, z: 0.58104897}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.6095907, y: 0.6309294, z: 0.6075392}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3846488300344549831}
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909328995530048584}
-  m_Mesh: {fileID: -1717708615527161202, guid: 5612bfa16cecbf64eb3725dd1813215e, type: 3}
+  m_Mesh: {fileID: -1964824976520163818, guid: 98631f972d2925141a2dcee745a587f1, type: 3}
 --- !u!23 &5698478892023177727
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 12d07736a236ca2458438867a710edf4, type: 2}
+  - {fileID: 2100000, guid: 1a63d72c6152ef54493960acf859fc4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,7 +89,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8292954321149236491
+--- !u!114 &420100247685292591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909328995530048584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed99cbfd6ff9a704f8b1b1f67da7fcd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxSoundManager: {fileID: 3266946135499469764}
+  mascaraPrefab: {fileID: 4515475303260617873, guid: 28554416c426d174badb9a8d8ced7ad6, type: 3}
+  vida: 1
+--- !u!65 &7728445961345802248
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,28 +123,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5526018, y: 0.5526018, z: 0.5526019}
-  m_Center: {x: 0, y: 0.2763009, z: 0.02763009}
---- !u!114 &420100247685292591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909328995530048584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed99cbfd6ff9a704f8b1b1f67da7fcd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxSoundManager: {fileID: 3266946135499469764}
-  volume: 0.5
-  spatialSound: 0
-  pitchJitter: 0.02
-  minDistance: 2
-  maxDistance: 15
-  mascaraPrefab: {fileID: 4515475303260617873, guid: 28554416c426d174badb9a8d8ced7ad6, type: 3}
-  vida: 1
+  m_Size: {x: 1.9999999, y: 2.0000002, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2039823982773851667
 GameObject:
   m_ObjectHideFlags: 0

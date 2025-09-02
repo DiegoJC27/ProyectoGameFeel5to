@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6095907
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6309294
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6075392
+      objectReference: {fileID: 0}
+    - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1366673
+      value: 1.4142
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37544826
+      value: 0.8545
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.6727295
+      value: 5.5872016
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3560998633814074872, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -55,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 5136834845145899036, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 3581658508463639989, guid: 5612bfa16cecbf64eb3725dd1813215e, type: 3}
+      objectReference: {fileID: -1964824976520163818, guid: 98631f972d2925141a2dcee745a587f1, type: 3}
     - target: {fileID: 5838892538631477163, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: soundList.Array.data[1].volume
       value: 0.2
@@ -67,16 +79,20 @@ PrefabInstance:
     - target: {fileID: 6978145804208703203, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ce9745802a1a1aa4eb22f567709ee227, type: 2}
+      objectReference: {fileID: 2100000, guid: eb42043ce030bd64abb0a0f6dfc0e4fd, type: 2}
     m_RemovedComponents:
     - {fileID: 3587308789838568095, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
     - {fileID: 5649587208468002933, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+    - {fileID: 4487831478363397512, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6635619932551645078, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7231534000357800125}
+    - targetCorrespondingSourceObject: {fileID: 6635619932551645078, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9028978206887405719}
   m_SourcePrefab: {fileID: 100100000, guid: f0975c95c1cdf1a47a3d87bb75645962, type: 3}
 --- !u!114 &294124662471244863 stripped
 MonoBehaviour:
@@ -107,12 +123,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxSoundManager: {fileID: 294124662471244863}
-  volume: 0.505
-  spatialSound: 0
-  pitchJitter: 0.02
-  minDistance: 2
-  maxDistance: 15
   mangoPrefab: {fileID: 7786071406801373546, guid: cd3079551f2df1945869c47463f57e62, type: 3}
   mangosSaltando: 2
   mangosGolpe: 4
   vida: 4
+--- !u!65 &9028978206887405719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650044650827508738}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9999999, y: 2.0000002, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
