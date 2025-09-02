@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifeBox
       objectReference: {fileID: 0}
+    - target: {fileID: 1322559736935893896, guid: 783887a717c93154d8a61f71e3d8a9c5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1717708615527161202, guid: 5612bfa16cecbf64eb3725dd1813215e, type: 3}
     - target: {fileID: 7239585202340286060, guid: 783887a717c93154d8a61f71e3d8a9c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.85877514

@@ -1971,7 +1971,6 @@ GameObject:
   m_Component:
   - component: {fileID: 539745478100655087}
   - component: {fileID: 7635726066119915157}
-  - component: {fileID: 4757836856755875627}
   - component: {fileID: 4757836856755875625}
   - component: {fileID: 8216981206540712241}
   m_Layer: 0
@@ -2045,31 +2044,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &4757836856755875627
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3541754002163558908}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.8
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.98, z: 0}
 --- !u!114 &4757836856755875625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,7 +2088,23 @@ MonoBehaviour:
   _FirstJump: 0
   _IsGrounded: 0
   _IsAttacking: 0
+  _IsGettingHit: 0
+  _IsWalking: 0
+  attackCollision: {fileID: 0}
+  floorCollision: {fileID: 0}
+  cinemachineCamera: {fileID: 0}
+  noise: {fileID: 0}
+  amplitud: 0
+  frecuency: 0
   animator: {fileID: 0}
+  playerSoundManager: {fileID: 0}
+  feetBump: {fileID: 0}
+  chestBump: {fileID: 0}
+  feetDistance: 0
+  chestDistance: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3921334144448749991
 GameObject:
   m_ObjectHideFlags: 0

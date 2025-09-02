@@ -9,7 +9,7 @@ public class CajaGrande : Caja
 
     public override void Romper(TipoImpacto tipo)
     {
-        base.Romper(tipo);
+        //base.Romper(tipo);
         if (tipo == TipoImpacto.Saltar)
         {
             // SFX: rebote
@@ -25,7 +25,7 @@ public class CajaGrande : Caja
             {
                 // SFX: destruir al morir por salto
                 PlayImpactSound(TipoImpacto.Golpear);
-                Destroy(gameObject);
+                StartCoroutine(RomperCaja());
             }
         }
         else if (tipo == TipoImpacto.Golpear)
@@ -39,6 +39,8 @@ public class CajaGrande : Caja
                 {
                     Instantiate(mangoPrefab, transform.position + Vector3.up, Quaternion.identity);
                     vida--;
+                    StartCoroutine(RomperCaja());
+
                 }
             }
 
