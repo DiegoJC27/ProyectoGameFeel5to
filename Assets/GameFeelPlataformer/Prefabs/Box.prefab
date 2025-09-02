@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3822445386067416721, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.6095907
       objectReference: {fileID: 0}
     - target: {fileID: 3822445386067416721, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.6309294
       objectReference: {fileID: 0}
     - target: {fileID: 3822445386067416721, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 0.6075392
       objectReference: {fileID: 0}
     - target: {fileID: 3822445386067416721, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4840961281999999861, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1964824976520163818, guid: 98631f972d2925141a2dcee745a587f1, type: 3}
     - target: {fileID: 5332373087991221020, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       propertyPath: m_Convex
       value: 0
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Caja
       objectReference: {fileID: 0}
+    - target: {fileID: 7255406835543094666, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 805487a24eecbcf4a923c3ff4746bd22, type: 2}
     m_RemovedComponents:
     - {fileID: 5332373087991221020, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
     m_RemovedGameObjects: []
@@ -87,10 +95,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6372960278371153151, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4487831478363397512}
+      addedObject: {fileID: 3587308789838568095}
     - targetCorrespondingSourceObject: {fileID: 6372960278371153151, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3587308789838568095}
+      addedObject: {fileID: 6965036782239606535}
   m_SourcePrefab: {fileID: 100100000, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
 --- !u!114 &5838892538631477163 stripped
 MonoBehaviour:
@@ -108,7 +116,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6372960278371153151, guid: 6a21acecf4e63a24983c5d2f67536a61, type: 3}
   m_PrefabInstance: {fileID: 317284629059122025}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &4487831478363397512
+--- !u!114 &3587308789838568095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635619932551645078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb72e6a54549b94a9a19b5b7330471b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxSoundManager: {fileID: 5838892538631477163}
+  mangoPrefab: {fileID: 7786071406801373546, guid: cd3079551f2df1945869c47463f57e62, type: 3}
+  mangosSaltando: 5
+  mangosGolpe: 2
+  vida: 1
+--- !u!65 &6965036782239606535
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,27 +152,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5526018, y: 0.5526018, z: 0.5526019}
-  m_Center: {x: 0, y: 0.2763009, z: 0.02763009}
---- !u!114 &3587308789838568095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6635619932551645078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eb72e6a54549b94a9a19b5b7330471b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxSoundManager: {fileID: 5838892538631477163}
-  volume: 0.5
-  spatialSound: 0
-  pitchJitter: 0.02
-  minDistance: 2
-  maxDistance: 15
-  mangoPrefab: {fileID: 7786071406801373546, guid: cd3079551f2df1945869c47463f57e62, type: 3}
-  mangosSaltando: 5
-  mangosGolpe: 2
-  vida: 1
+  m_Size: {x: 1.9999999, y: 2.0000002, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
