@@ -28,8 +28,9 @@ public class CajaGrande : Caja
                 StartCoroutine(RomperCaja());
             }
         }
-        else if (tipo == TipoImpacto.Golpear)
+        else if (tipo == TipoImpacto.Golpear && !isBeingDestroyed)
         {
+            isBeingDestroyed = true;
             // SFX: destruir
             PlayImpactSound(TipoImpacto.Golpear);
 
@@ -40,7 +41,6 @@ public class CajaGrande : Caja
                     Instantiate(mangoPrefab, transform.position + Vector3.up, Quaternion.identity);
                     vida--;
                     StartCoroutine(RomperCaja());
-
                 }
             }
 

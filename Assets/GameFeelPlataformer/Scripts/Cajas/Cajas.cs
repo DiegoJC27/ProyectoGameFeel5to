@@ -9,7 +9,7 @@ public abstract class Caja : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private SoundManager boxSoundManager;
-    bool isBeingDestroyed = false;
+    protected bool isBeingDestroyed = false;
     /// Llama esto en los hijos cuando reciban impacto.
     protected void PlayImpactSound(TipoImpacto tipo)
     {
@@ -33,11 +33,9 @@ public abstract class Caja : MonoBehaviour
     }
     protected IEnumerator RomperCaja()
     {
-        MeshRenderer mesh = GetComponent<MeshRenderer>();
-        mesh.enabled = false;
-        Collider collider = GetComponent<Collider>();
-        collider.enabled = false;
-        yield return new WaitForSeconds(1);
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 }
